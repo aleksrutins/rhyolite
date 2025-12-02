@@ -1,14 +1,21 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-namespace rh {
+#include <QObject>
 
-class Scene
+namespace Rh {
+
+class Game;
+class Entity;
+
+class Scene : public QObject
 {
+    Q_OBJECT
 public:
-    Scene();
+    explicit Scene(QObject *parent);
+    auto entities() -> QVector<Entity*>;
 };
 
-} // namespace rh
+} // namespace Rh
 
 #endif // SCENE_H

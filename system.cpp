@@ -2,10 +2,6 @@
 
 #include "include/rhyolite/game.h"
 
-namespace rh {
+namespace Rh {
 
-System::System(Game *parent)
-    : QObject{parent}
-{}
-
-} // namespace rh
+} // namespace Rh

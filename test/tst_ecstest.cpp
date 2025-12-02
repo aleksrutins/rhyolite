@@ -2,7 +2,7 @@
 
 // add necessary includes here
 #include <rhyolite/core.h>
-using namespace rh;
+using namespace Rh;
 
 class ECSTest : public QObject
 {

@@ -4,19 +4,18 @@
 #include <QObject>
 
 
-namespace rh {
+namespace Rh {
 
 class Game;
 
-class System : public QObject
+class System
 {
-    Q_OBJECT
 public:
-    System(Game *);
-
-signals:
+    virtual void init(Game *) = 0;
 };
 
-} // namespace rh
+} // namespace Rh
+
+Q_DECLARE_INTERFACE(Rh::System, "Rhyolite.System")
 
 #endif // SYSTEM_H

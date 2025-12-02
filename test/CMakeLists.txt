@@ -18,5 +18,5 @@ add_executable(ECSTest tst_ecstest.cpp)
 add_test(NAME ECSTest COMMAND ECSTest)
 
 target_link_libraries(ECSTest PRIVATE Qt${QT_VERSION_MAJOR}::Test)
-target_link_libraries(ECSTest PRIVATE rhyolite)
+target_link_libraries(ECSTest PRIVATE Rhyolite)
 

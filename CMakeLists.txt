@@ -15,7 +15,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
-add_library(rhyolite STATIC
+add_library(Rhyolite SHARED
   scene.cpp
   include/rhyolite/scene.h
   include/rhyolite/entity.h entity.cpp
@@ -25,12 +25,14 @@ add_library(rhyolite STATIC
   include/rhyolite/core.h
 )
 
-target_link_libraries(rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
-target_link_libraries(rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_include_directories(rhyolite INTERFACE include)
+target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_include_directories(Rhyolite INTERFACE include)
 
-target_compile_definitions(rhyolite PRIVATE RHYOLITE_LIBRARY)
+target_compile_definitions(Rhyolite PRIVATE RHYOLITE_LIBRARY)
 add_subdirectory(test)
+add_subdirectory(Rhyolite2D)
+add_subdirectory(example)

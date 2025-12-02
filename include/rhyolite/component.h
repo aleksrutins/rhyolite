@@ -5,29 +5,26 @@
 #include "entity.h"
 #include "system.h"
 
-namespace rh {
+namespace Rh {
 
-class Component : public QObject
+class Component
 {
-    Q_OBJECT
-
     template<typename C>
     auto getComponent() -> C* {
-        if(!parent()) return nullptr;
-        return ((Entity*)parent())->findChild<C*>();
+        auto obj = reinterpret_cast<QObject*>(this);
+        if(!obj->parent()) return nullptr;
+        return ((Entity*)obj->parent())->findChild<C*>();
     }
 
 
 public:
-    Component(Entity *entity);
-
     virtual auto id() -> QString = 0;
-    virtual auto init(System const &) -> bool = 0;
-    virtual void update(System const &) = 0;
-
-signals:
+    virtual void init(System const*) = 0;
+    virtual void update(System const*) = 0;
 };
 
 }
+
+Q_DECLARE_INTERFACE(Rh::Component, "Rhyolite/Component")
 
 #endif // COMPONENT_H

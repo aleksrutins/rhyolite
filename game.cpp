@@ -1,9 +1,16 @@
 #include "include/rhyolite/game.h"
+#include "include/rhyolite/system.h"
 
-namespace rh {
+namespace Rh {
 
 Game::Game(QObject *parent)
-    : QObject{parent}
+    : Scene{parent}
 {}
+
+void Game::use(System *s)
+{
+    systems.append(s);
+    s->init(this);
+}
 
 }

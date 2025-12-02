@@ -4,7 +4,7 @@
 #include <typeinfo>
 #include <QObject>
 
-namespace rh {
+namespace Rh {
 
 class Component;
 class Game;
@@ -19,12 +19,12 @@ class Entity : public QObject
 public:
     Entity(Game *, QAnyStringView);
 
-    void init(System &);
-    void update(System &);
+    void init(System *);
+    void update(System *);
 
 signals:
 };
 
-} // namespace rh
+} // namespace Rh
 
 #endif // ENTITY_H

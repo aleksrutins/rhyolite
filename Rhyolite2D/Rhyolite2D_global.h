@@ -1,0 +1,12 @@
+#ifndef RHYOLITE2D_GLOBAL_H
+#define RHYOLITE2D_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(RHYOLITE2D_LIBRARY)
+#define RHYOLITE2D_EXPORT Q_DECL_EXPORT
+#else
+#define RHYOLITE2D_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // RHYOLITE2D_GLOBAL_H
