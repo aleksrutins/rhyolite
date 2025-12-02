@@ -1,0 +1,27 @@
+image: fedora/43
+
+packages:
+  - cmake
+  - ninja-build
+  - qt6-qtbase-devel
+
+oauth: pages.sr.ht/PAGES:RW
+
+secrets:
+  - 024294cc-ae52-4f6e-a71a-fb566d28e60c
+
+environment:
+  site: phlexite.farthergate.com
+
+tasks:
+  - configure: |
+      cd rhyolite
+      mkdir build
+      cd build
+      cmake -GNinja ..
+  - build: |
+      cd rhyolite/build
+      ninja
+  - test: |
+      cd rhyolite/build
+      ./test/RhyoliteTest
