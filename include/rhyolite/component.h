@@ -7,8 +7,12 @@
 
 namespace Rh {
 
-class Component
+class Component : public QObject
 {
+    Q_OBJECT
+protected:
+    auto game() -> Game*;
+
     template<typename C>
     auto getComponent() -> C* {
         auto obj = reinterpret_cast<QObject*>(this);
@@ -18,13 +22,13 @@ class Component
 
 
 public:
+    Component(Entity *parent) : QObject(parent) {}
+
     virtual auto id() -> QString = 0;
     virtual void init(System const*) = 0;
     virtual void update(System const*) = 0;
 };
 
 }
-
-Q_DECLARE_INTERFACE(Rh::Component, "Rhyolite/Component")
 
 #endif // COMPONENT_H

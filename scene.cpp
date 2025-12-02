@@ -22,5 +22,4 @@ auto Scene::entities() -> QVector<Entity*>
     return res;
 }
 
-
 } // namespace Rh

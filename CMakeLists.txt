@@ -33,6 +33,6 @@ target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_include_directories(Rhyolite INTERFACE include)
 
 target_compile_definitions(Rhyolite PRIVATE RHYOLITE_LIBRARY)
-add_subdirectory(test)
 add_subdirectory(Rhyolite2D)
 add_subdirectory(example)
+add_subdirectory(test)

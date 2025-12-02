@@ -63,6 +63,8 @@ bool Renderer2D::event(QEvent *event)
         renderNow();
         renderLater();
         return true;
+    } else if(event->type() == QEvent::Show) {
+        renderLater();
     }
     return QWindow::event(event);
 }

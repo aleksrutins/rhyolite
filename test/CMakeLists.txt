@@ -1,22 +1,29 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(ECSTest LANGUAGES CXX)
+project(RhyoliteTest LANGUAGES CXX)
 
 enable_testing()
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Test)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Test)
+SET(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
+Include(FetchContent)
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.11.0
+)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+FetchContent_MakeAvailable(Catch2)
 
-add_executable(ECSTest tst_ecstest.cpp)
-add_test(NAME ECSTest COMMAND ECSTest)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui)
 
-target_link_libraries(ECSTest PRIVATE Qt${QT_VERSION_MAJOR}::Test)
-target_link_libraries(ECSTest PRIVATE Rhyolite)
+add_executable(RhyoliteTest tst_rhyolitetest.cpp
+  tst_rhyolite2dtest.cpp)
+target_link_libraries(RhyoliteTest PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(RhyoliteTest PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(RhyoliteTest PRIVATE Rhyolite)
+target_link_libraries(RhyoliteTest PRIVATE Rhyolite2D)
 
+
+add_test(NAME RhyoliteTest COMMAND RhyoliteTest)

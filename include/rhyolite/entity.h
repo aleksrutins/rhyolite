@@ -14,8 +14,6 @@ class Entity : public QObject
 {
     Q_OBJECT
 
-    QVector<Component*> components;
-
 public:
     Entity(Game *, QAnyStringView);
 

@@ -24,9 +24,9 @@ class RHYOLITE2D_EXPORT Renderer2D : public QWindow, public Rh::System
 public:
     explicit Renderer2D(QWindow *parent = nullptr);
 
-    virtual void render(QPainter *painter);
-
     void init(Game *g);
+
+    void startTick();
 
     void handle(decltype(customHandler) handler) {
         customHandler = handler;
@@ -40,6 +40,8 @@ public slots:
 
 protected:
     bool event(QEvent *event) override;
+
+    virtual void render(QPainter *painter);
 
     void resizeEvent(QResizeEvent *event) override;
     void exposeEvent(QExposeEvent *event) override;

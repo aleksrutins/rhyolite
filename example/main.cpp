@@ -3,13 +3,11 @@
 #include <rhyolite/core.h>
 #include <rhyolite/2d.h>
 
-class Gradient : public QObject, public virtual Rh::Component {
+class Gradient : public Rh::Component {
     Q_OBJECT
-    Q_INTERFACES(Rh::Component)
     long long count;
 public:
-    Gradient(Rh::Entity *e) : QObject(e) {}
-
+    Gradient(Rh::Entity *e) : Component(e) {}
     QString id();
 
     void init(Rh::System const*);
@@ -29,7 +27,7 @@ void Gradient::update(Rh::System const* s) {
     r->paint->fillRect(0, 0, r->width(), r->height(), QGradient::NightFade);
     r->paint->drawText(QRectF(0, 0, r->width(), r->height()), Qt::AlignCenter, QString::number(count));
     count++;
-    count = count % 100;
+    count %= 100;
 }
 
 int main(int argc, char *argv[])
