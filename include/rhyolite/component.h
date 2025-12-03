@@ -10,6 +10,7 @@ namespace Rh {
 class Component : public QObject
 {
     Q_OBJECT
+
 protected:
     auto game() -> Game*;
 
@@ -19,7 +20,6 @@ protected:
         if(!obj->parent()) return nullptr;
         return ((Entity*)obj->parent())->findChild<C*>();
     }
-
 
 public:
     Component(Entity *parent) : QObject(parent) {}

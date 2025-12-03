@@ -19,10 +19,35 @@ int main(int argc, char *argv[])
 
     int count = 0;
 
-    new CustomRender(new Rh::Entity(g, "text"), [&](Renderer2D const *r) {
-        r->paint->drawText(QRectF(0, 0, r->width(), r->height()), Qt::AlignCenter, QString::number(count));
+    auto text = new Rh::Entity(g, "text");
+    auto t = new Transform(text);
+    t->position = QPoint(50, 50);
+    new CustomRender(text, [&](Renderer2D const *r) {
+        r->paint->drawText(t->getScreenPosition(), QString::number(count));
         count++;
-        count %= 100;
+        count %= 400;
+    });
+
+    wnd.handle([&](QEvent *evt) {
+        if(evt->type() == QEvent::KeyPress) {
+            switch(dynamic_cast<QKeyEvent*>(evt)->key()) {
+            case Qt::Key_Left:
+                t->position -= QPoint(10, 0);
+                return true;
+            case Qt::Key_Right:
+                t->position += QPoint(10, 0);
+                return true;
+            case Qt::Key_Up:
+                t->position -= QPoint(0, 10);
+                return true;
+            case Qt::Key_Down:
+                t->position += QPoint(0, 10);
+                return true;
+            case Qt::Key_Q:
+                return wnd.close();
+            }
+        }
+        return false;
     });
 
     wnd.show();

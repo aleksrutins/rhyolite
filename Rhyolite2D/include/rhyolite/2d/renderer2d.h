@@ -19,7 +19,7 @@ class RHYOLITE2D_EXPORT Renderer2D : public QWindow, public Rh::System
 {
     Q_OBJECT
     Q_INTERFACES(Rh::System)
-    std::function<bool(QEvent*)> customHandler;
+    std::function<bool(QEvent*)> customHandler = [](QEvent*){return false;};
     Game *game;
 public:
     explicit Renderer2D(QWindow *parent = nullptr);
