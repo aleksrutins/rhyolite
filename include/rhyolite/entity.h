@@ -7,7 +7,7 @@
 namespace Rh {
 
 class Component;
-class Game;
+class Scene;
 class System;
 
 class Entity : public QObject
@@ -15,7 +15,7 @@ class Entity : public QObject
     Q_OBJECT
 
 public:
-    Entity(Game *, QAnyStringView);
+    Entity(Scene *, QAnyStringView);
 
     void init(System *);
     void update(System *);

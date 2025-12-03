@@ -5,11 +5,13 @@ project(Rhyolite2D LANGUAGES CXX)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
@@ -22,11 +24,17 @@ add_library(Rhyolite2D SHARED
   include/rhyolite/2d/camera.h camera.cpp
   include/rhyolite/2d/cameraentity.h cameraentity.cpp
   include/rhyolite/2d/transform.h transform.cpp
+  include/rhyolite/2d/sprite.h sprite.cpp
+  include/rhyolite/2d/background.h background.cpp
+  include/rhyolite/2d/customrender.h customrender.cpp
+
 
 )
 
 target_link_libraries(Rhyolite2D PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(Rhyolite2D PUBLIC Rhyolite)
+target_link_libraries(Rhyolite2D PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(Rhyolite2D PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(Rhyolite2D PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(Rhyolite2D PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(Rhyolite2D PRIVATE Qt${QT_VERSION_MAJOR}::Core)

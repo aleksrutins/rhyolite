@@ -5,7 +5,7 @@
 
 namespace Rh {
 
-Entity::Entity(Game *parent, QAnyStringView name)
+Entity::Entity(Scene *parent, QAnyStringView name)
     : QObject(parent)
 {
     setObjectName(name);

@@ -4,7 +4,7 @@ project(RhyoliteTest LANGUAGES CXX)
 
 enable_testing()
 
-SET(CMAKE_CXX_STANDARD 11)
+SET(CMAKE_CXX_STANDARD 23)
 
 Include(FetchContent)
 FetchContent_Declare(
