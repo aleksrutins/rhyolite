@@ -30,7 +30,6 @@ void Renderer2D::renderNow()
     QPaintDevice *device = m_backingStore->paintDevice();
     QPainter painter(device);
 
-    //painter.fillRect(0, 0, width(), height(), QColor);
     render(&painter);
     painter.end();
 
@@ -67,8 +66,11 @@ bool Renderer2D::event(QEvent *event)
         renderLater();
         return QWindow::event(event);
     }
-    if(customHandler(event)) return true;
-    return QWindow::event(event);
+    bool handled = false;
+    for(auto handler : customHandlers) {
+        handled = handled || handler(event);
+    }
+    return handled || QWindow::event(event);
 }
 
 } // namespace TwoD

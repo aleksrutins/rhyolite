@@ -1,0 +1,12 @@
+#ifndef RHYOLITEMATH_GLOBAL_H
+#define RHYOLITEMATH_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(RHYOLITEMATH_LIBRARY)
+#define RHYOLITEMATH_EXPORT Q_DECL_EXPORT
+#else
+#define RHYOLITEMATH_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // RHYOLITEMATH_GLOBAL_H

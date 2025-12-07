@@ -12,8 +12,6 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_library(Rhyolite SHARED
   scene.cpp
@@ -23,16 +21,19 @@ add_library(Rhyolite SHARED
   include/rhyolite/system.h system.cpp
   include/rhyolite/game.h game.cpp
   include/rhyolite/core.h
+  include/rhyolite/timer/timersystem.h timersystem.cpp
+  include/rhyolite/timer/ontick.h ontick.cpp
 )
 
 target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(Rhyolite PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_include_directories(Rhyolite PUBLIC include)
 target_include_directories(Rhyolite INTERFACE include)
 
 target_compile_definitions(Rhyolite PRIVATE RHYOLITE_LIBRARY)
 add_subdirectory(Rhyolite2D)
 add_subdirectory(example)
 add_subdirectory(test)
+add_subdirectory(RhyoliteInput)
+add_subdirectory(RhyoliteMath)
